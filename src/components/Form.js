@@ -5,7 +5,7 @@ const Form = () => {
         <div className="form">
             <input type="text" name="" id="" />
        
-       <button type="submit"><i class="fas fa-plus"></i></button>
+       <button type="submit"><i className="fas fa-plus"></i></button>
         </div>
     )
 }

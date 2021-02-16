@@ -1,27 +1,29 @@
-import React from "react";
+import React, {useState} from 'react';
 
-const List = () => {
+function List() {
+
+  const initalTodos = [
+    {id: 1, name: '1st todo', complete: false},
+    {id: 2, name: '2nd todo', complete: false},
+    {id: 3, name: '3rd todo', complete: false},
+  ];
+  
+  const [todos, setTodos] = useState(initalTodos);
+  
+  
+
   return (
-    <div className="list">
-      <ul>
-        <li>
-          Item1
-          <i class="fas fa-check"></i>
-          <i class="far fa-trash-alt"></i>
-        </li>
-        <li>
-          Item2
-          <i class="fas fa-check"></i>
-          <i class="far fa-trash-alt"></i>
-        </li>
-        <li>
-          Item3
-          <i class="fas fa-check"></i>
-          <i class="far fa-trash-alt"></i>
-        </li>
-      </ul>
-    </div>
-  );
-};
 
-export default List;
+    <ul>
+      {todos.map((todo)=>(
+
+        //have to put an id/index for the items in react
+        <li key={todo.id}>
+          <input type="checkbox" /> {todo.name}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default List
