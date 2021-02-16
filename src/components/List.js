@@ -4,10 +4,10 @@ function List() {
 
   const initalTodos = [
     {id: 1, name: '1st todo', complete: false},
-    {id: 2, name: '2nd todo', complete: false},
+    {id: 2, name: '2nd todo', complete: true},
     {id: 3, name: '3rd todo', complete: false},
   ];
-  
+
   const [todos, setTodos] = useState(initalTodos);
   
   
@@ -19,7 +19,7 @@ function List() {
 
         //have to put an id/index for the items in react
         <li key={todo.id}>
-          <input type="checkbox" /> {todo.name}
+          <input type="checkbox" checked={todo.complete}/> {todo.name}
         </li>
       ))}
     </ul>
