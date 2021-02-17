@@ -19,7 +19,7 @@ function App() {
     if (localStorage.getItem(LSKEY) != null) {
         
       let localTodo = JSON.parse(localStorage.getItem(LSKEY));
-      
+
       setTodos(localTodo);
 
     }
@@ -28,7 +28,9 @@ function App() {
   //second parameter [todos] will trigger the useEffect when a change to the todos state
   //the useEffect will run to setItem in localstorage
   useEffect(() => {
+
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
+
   }, [todos]);
 
 
@@ -43,7 +45,10 @@ function App() {
         setTodos={setTodos}
       />
 
-      <List todos={todos} />
+      <List 
+        todos={todos} 
+        setTodos={setTodos}
+      />
     </div>
   );
 }

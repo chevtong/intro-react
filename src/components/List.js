@@ -1,7 +1,10 @@
 import React from 'react';
 
-function List({todos}) {
-
+function List({todos, setTodos}) {
+  
+  // const deleteHandler = (e) =>{
+  //   console.log(e.id)
+  // }
 
   return (
     <div className="list">
@@ -12,6 +15,8 @@ function List({todos}) {
         <li key={todo.id}>
           <input type="checkbox" checked={todo.complete}/> 
           {todo.name}
+          <button className="trash-btn"><i className="fas fa-trash"></i></button>
+
         </li>
       ))}
     </ul>

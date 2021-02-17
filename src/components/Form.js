@@ -30,7 +30,7 @@ const Form = ({todos, setTodos}) => {
   return (
     <div className="form">
       <input ref={inputRef} type="text" />
-      <button onClick={submitHandler} type="submit">
+      <button onClick={submitHandler} type="submit" className="addtodo-btn">
         <i className="fas fa-plus"></i>
       </button>
     </div>

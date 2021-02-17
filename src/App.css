@@ -16,15 +16,18 @@ li{
     color: #0e2431;
 }
 button{
-    background-color: #f9b248;
     border: none;
+}
+button.addtodo-btn{
+    background-color: #f9b248;
+   
     padding: 1rem;
     border: 3px solid #0e2431;
     border-left: none;
     border-radius: 0 13px 13px 0;
     font-size: 1.5rem;
 }
-button:hover{
+button.addtodo-btn:hover{
     background-color:#0e2431 ;
 }
 input{

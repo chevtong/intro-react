@@ -1,5 +1,8 @@
-Title: Your first front-end framework: React
-Repository: intro-react
+# My very first front-end framework: React
+
+Live Version: [To Do App](https://todo-app-by-react.netlify.app)
+
+<!-- Repository: intro-react
 Mode: solo
 Type of Challenge: learning
 Duration: week-ish
@@ -48,4 +51,4 @@ Deliverables
 Publish the source code on your GitHub repository
 Deploy the project on Netlify
 Tip: to deploy a React app you first run the command npm run build, and once the command finishes you will have your app ready in the build folder: just drag and drop this folder in Netlify and you are done. Easy!
-Good luck!
+Good luck! -->
