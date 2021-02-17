@@ -1,4 +1,5 @@
 import React,{useRef} from "react";
+import { v4 as uuidv4 } from 'uuid'
 
 //get the props from App.js, will need both todos and setTodos here
 const Form = ({todos, setTodos}) => {
@@ -19,7 +20,7 @@ const Form = ({todos, setTodos}) => {
         //use setTodos to change the current todos statue
         //first, combine the current todos by ...todos
         //then, add the new input by getting the name(the name we set above), adding the complete boolean and id 
-        setTodos([ ...todos, {name: name, complete: true, id: Math.random()*1000}])
+        setTodos([ ...todos, {name: name, complete: false, id: uuidv4()}])
            
         //give back a empty string to the input
         inputRef.current.value = null
