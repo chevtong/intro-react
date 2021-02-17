@@ -7,7 +7,7 @@ const Form = ({todos, setTodos}) => {
     //useRef can take the entry of the input
     const inputRef = useRef();
    
-    const submitHandler = (e)=> {
+    const submitHandler = () => {
 
         const name = inputRef.current.value
 
@@ -24,12 +24,20 @@ const Form = ({todos, setTodos}) => {
            
         //give back a empty string to the input
         inputRef.current.value = null
+    }
 
+    //when the enterkey is pressed will execute the submitHandler as well 
+    //since the if condition cannot put inside the submitHandler
+    //it can't be fulfilled if the user press the submit button
+    const keyEnterHandler = (e) =>{
+        if(e.key === 'Enter'){
+            submitHandler()
+            }
     }
 
   return (
     <div className="form">
-      <input ref={inputRef} type="text" />
+      <input ref={inputRef} type="text" onKeyPress={keyEnterHandler}/>
       <button onClick={submitHandler} type="submit" className="addtodo-btn">
         <i className="fas fa-plus"></i>
       </button>
