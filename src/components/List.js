@@ -1,30 +1,26 @@
-import React from 'react';
+import React from "react";
+import Item from "./Item";
 
-function List({todos, setTodos}) {
+function List({ todos, setTodos }) {
+
+
   
-  // const deleteHandler = (e) =>{
-  //   console.log(e.id)
-  // }
-
   return (
     <div className="list">
-    <ul>
-      {todos.map((todo)=>(
+      <ul>
+        {todos.map((todo) => (
+          <Item 
+            key={todo.id}
+            todos={todos}
+            setTodos={setTodos}
+            todo={todo} 
+          />
+        ))}
+      </ul>
 
-        //have to put an id/index for the items in react
-        <li key={todo.id}>
-          <input type="checkbox" checked={todo.complete}/> 
-          {todo.name}
-          <button className="trash-btn"><i className="fas fa-trash"></i></button>
-
-        </li>
-      ))}
-    </ul>
-
-    <p>{todos.filter( todo => !todo.complete).length} item(s) to be done </p>
-
+      <p>{todos.filter((todo) => !todo.complete).length} item(s) to be done </p>
     </div>
-  )
+  );
 }
 
-export default List
+export default List;
