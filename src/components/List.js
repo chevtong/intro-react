@@ -1,28 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-function List() {
+function List({todos}) {
 
-  const initalTodos = [
-    {id: 1, name: '1st todo', complete: false},
-    {id: 2, name: '2nd todo', complete: true},
-    {id: 3, name: '3rd todo', complete: false},
-  ];
-
-  const [todos, setTodos] = useState(initalTodos);
-  
-  
 
   return (
-
+    <div className="list">
     <ul>
       {todos.map((todo)=>(
 
         //have to put an id/index for the items in react
         <li key={todo.id}>
-          <input type="checkbox" checked={todo.complete}/> {todo.name}
+          <input type="checkbox" checked={todo.complete}/> 
+          {todo.name}
         </li>
       ))}
     </ul>
+
+    <p>{todos.filter( todo => !todo.complete).length} item(s) to be done </p>
+
+    </div>
   )
 }
 
