@@ -8,43 +8,23 @@ ul{
     
 }
 li{
-    background-color: #fc3a52;
-    border-radius: 13px;
-    padding: 1.5rem 1rem;
-    margin: .5rem;
-    width: 10rem;
-    color: #0e2431;
+   
 }
 button{
     border: none;
 }
 button.addtodo-btn{
-    background-color: #f9b248;
-   
-    padding: 1rem;
-    border: 3px solid #0e2431;
-    border-left: none;
-    border-radius: 0 13px 13px 0;
-    font-size: 1.5rem;
+    
 }
-button.addtodo-btn:hover{
-    background-color:#0e2431 ;
-}
+
 .newitem-input{
-    background-color: #f9b248;
-    border: none;
-    padding: 1rem 3rem;
-    border: 3px solid #0e2431;
-    border-right: none;
-    border-radius: 13px 0 0 13px;
-    color: #0e2431;
-    font-size: 1.5rem;
+   
 }
 input:focus{
     outline:none;
 }
 input[type="checkbox"]{
-    background-color: #f9b248;
+   
 }
 .App{
     width: 50%;
