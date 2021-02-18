@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 //get the props from App.js, will need both todos and setTodos here
-const Form = ({ todos, setTodos, setStatusDisplay }) => {
+const Form = ({ todos, setTodos }) => {
 
   //useRef can take the entry of the input
   const inputRef = useRef();
@@ -24,18 +24,14 @@ const Form = ({ todos, setTodos, setStatusDisplay }) => {
     inputRef.current.value = null;
   };
 
-  //get the display of statusDisplay - (all/complete/incomplete) from the dropdown menu
-  //update it in the state and show the corresponding categorized todo items
-  //refer to filterHandler in the List
-  const selectHandler = (e) => {
-    //console.log(e.target.value)
-    setStatusDisplay(e.target.value);
-  };
 
 
   return (
     <div className="form">
-
+      <div className="circle1"></div>
+      <div className="circle2"></div>
+      
+      <h2>ADD A NEW ONE</h2>
       <input 
         className="newitem-input" 
         type="text" 
@@ -48,14 +44,8 @@ const Form = ({ todos, setTodos, setStatusDisplay }) => {
         <i className="fas fa-plus"></i>
       </button>
 
-      <div className="select">
-        <select onChange={selectHandler}>
-          <option value="all">All</option>
-          <option value="complete">complete</option>
-          <option value="incomplete">incomplete</option>
-        </select>
-      </div>
-      
+
+
     </div>
   );
 };

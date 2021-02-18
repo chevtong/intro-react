@@ -37,13 +37,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TO DO LIST</h1>
+      
 
       <Form
         //need to pass the props to the components, so we can use inside it
         todos={todos}
         setTodos={setTodos}
-        setStatusDisplay={setStatusDisplay}
       />
 
       <List

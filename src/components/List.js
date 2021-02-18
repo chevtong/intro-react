@@ -4,6 +4,7 @@ function List({
   todos,
   setTodos,
   statusDisplay,
+  setStatusDisplay,
   categorizedTodos,
   setCategorizedTodos,
   isEditing,
@@ -42,6 +43,14 @@ function List({
     setTodos(newArray);
   };
 
+  //get the display of statusDisplay - (all/complete/incomplete) from the dropdown menu
+  //update it in the state and show the corresponding categorized todo items
+  //refer to filterHandler in the List
+  const selectHandler = (e) => {
+    //console.log(e.target.value)
+    setStatusDisplay(e.target.value);
+  };
+
   //categorized all the items in todos according to the statuDisplay
   const filterHandler = () => {
     //console.log(statusDisplay)
@@ -74,8 +83,8 @@ function List({
     setEditItem(editArray);
   };
 
-  //when edit submit btn is clicked on edit page, 
-  //use ref (like the new item input) to get the value, 
+  //when edit submit btn is clicked on edit page,
+  //use ref (like the new item input) to get the value,
   //and setTodos to update the state
   //change back the isEditing statue to false to go back to the viewTemplate
   const editSubmitHandler = (id) => {
@@ -97,17 +106,41 @@ function List({
   //viewTemplate will be shown when isEditing state is false
   //the default of isEditing = false
   const viewTemplate = (
-    <div className="list">
+    <div>
+      <div className="categories-btns">
+        <button
+          onClick={selectHandler}
+          className={statusDisplay == "complete" ? "active-btn" : "idle-btn"}
+          value="complete"
+        >
+          complete
+        </button>
+        <button
+          onClick={selectHandler}
+          className={statusDisplay == "all" ? "active-btn" : "idle-btn"}
+          value="all"
+        >
+          All
+        </button>
+        <button
+          onClick={selectHandler}
+          className={statusDisplay == "incomplete" ? "active-btn" : "idle-btn"}
+          value="incomplete"
+        >
+          ongoing
+        </button>
+      </div>
       <ul>
         {categorizedTodos.map((todo) => (
           <li key={todo.id}>
             <input
-              checked={todo.complete}
+              className="checkbox1"
+              checked={todo.complete }
               onChange={() => completeHandler(todo.id)}
               type="checkbox"
             />
-
-            {todo.name}
+            
+            <p className={todo.complete ? "incomplete-todo" : "completed-todo"}>{todo.name}</p>
 
             <button
               //1: change isEditing=true to switch to the editTemplate
@@ -131,18 +164,23 @@ function List({
         ))}
       </ul>
 
-      <p>{todos.filter((todo) => !todo.complete).length} incomplete item(s) </p>
+      <p className="todo-countdown">
+        {todos.filter((todo) => !todo.complete).length} incomplete item(s){" "}
+      </p>
     </div>
   );
 
   //editingTemplate will be shown when isEditing state is true
   //editItem state is updated when the user click on the Edit btn on viewTemplate,
-  //which execute the editItemHandler() 
+  //which execute the editItemHandler()
   const editingTemplate = (
-    <div>
-
+    <div className="edit-template">
       {editItem.map((todo) => (
         <div key={todo.id}>
+          <h2 className="edit-title">EDIT ITEM</h2>
+          <button onClick={() => setIsEditing(false)} type="submit" className="goback-btn">
+          <i class="fas fa-arrow-left"></i>
+          </button>
           <input
             className="edit-input"
             type="text"
@@ -154,11 +192,9 @@ function List({
               }
             }}
           />
-          <button onClick={() => setIsEditing(false)} type="submit">
-            Cancel
-          </button>
-          <button onClick={() => editSubmitHandler(todo.id)} type="submit">
-            Edit
+          
+          <button onClick={() => editSubmitHandler(todo.id)} type="submit" className="editsubmit-btn">
+          <i class="far fa-check-circle"></i>
           </button>
         </div>
       ))}
@@ -166,7 +202,13 @@ function List({
   );
 
   //conditional rendering according to the isEditing = true/false
-  return <div>{isEditing ? editingTemplate : viewTemplate}</div>;
+  return (
+    <div className="list">
+      <h1 className="title-list">MY TO DO LIST</h1>
+
+      {isEditing ? editingTemplate : viewTemplate}
+    </div>
+  );
 }
 
 export default List;
