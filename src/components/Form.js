@@ -44,7 +44,7 @@ const Form = ({ todos, setTodos, setStatusDisplay }) => {
 
   return (
     <div className="form">
-      <input ref={inputRef} type="text" onKeyPress={keyEnterHandler} />
+      <input ref={inputRef} type="text" onKeyPress={keyEnterHandler} className="newitem-input" />
       <button onClick={submitHandler} type="submit" className="addtodo-btn">
         <i className="fas fa-plus"></i>
       </button>

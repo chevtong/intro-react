@@ -13,6 +13,9 @@ function App() {
   const [statusDisplay, setStatusDisplay] = useState("all");
   const [categorizedTodos, setCategorizedTodos] = useState([]);
 
+  const [isEditing, setEditing] = useState(false);
+
+
   //this is the name to show in the key of your broswer's application
   const LSKEY = "todoApp";
   //with a empty second parameter, the useEffect will run only once when the page is loaded
@@ -49,6 +52,8 @@ function App() {
         setStatusDisplay={setStatusDisplay}
         categorizedTodos={categorizedTodos}
         setCategorizedTodos={setCategorizedTodos}
+        isEditing={isEditing}
+        setEditing={setEditing}
       />
     </div>
   );

@@ -30,7 +30,7 @@ button.addtodo-btn{
 button.addtodo-btn:hover{
     background-color:#0e2431 ;
 }
-input{
+.newitem-input{
     background-color: #f9b248;
     border: none;
     padding: 1rem 3rem;

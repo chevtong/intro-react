@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function List({
   todos,
@@ -7,6 +7,8 @@ function List({
   categorizedTodos,
   setCategorizedTodos,
 }) {
+
+  const [isEditing,setIsEditing] = useState(false);
   //get the id from the selected item then pass it to the function
   //create a new array from ...todos (a safer way to change the values of state)
   // filter it by getting the id is not matching
@@ -15,8 +17,6 @@ function List({
     let originalArray = [...todos];
 
     let newArray = originalArray.filter((item) => item.id !== id);
-
-    //console.log(newArray);
 
     setTodos(newArray);
   };
@@ -62,7 +62,18 @@ function List({
     filterHandler();
   }, [todos, statusDisplay]);
 
-  return (
+  // const editHandler = (id,newName)=>{
+  //   const editArray = todos.map(item =>{
+  //     if(item.id == id){
+  //       return {...item, name: newName}
+  //     }
+  //     return item;
+  //   })
+  //   setTodos(editArray)
+  // }
+
+
+  const viewTemplate = (
     <div className="list">
       <ul>
         {categorizedTodos.map((todo) => (
@@ -74,6 +85,10 @@ function List({
             />
 
             {todo.name}
+
+            <button onClick={() => setIsEditing(true)} className="edit-btn">
+              <i className="far fa-edit"></i>
+            </button>
 
             <button
               onClick={() => deleteHandler(todo.id)}
@@ -87,7 +102,18 @@ function List({
 
       <p>{todos.filter((todo) => !todo.complete).length} incomplete item(s) </p>
     </div>
-  );
+  )
+  const editingTemplate = (
+    <form>
+      
+      <input className="edit-input" type="text" />
+      <button onClick={() => setIsEditing(false)} type="submit">Cancel</button>
+      <button type="submit">Edit</button>
+    </form>
+  )
+
+  return <div className="todo">{isEditing ? editingTemplate : viewTemplate}</div>;
+  
 }
 
 export default List;
