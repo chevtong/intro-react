@@ -1,7 +1,12 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
-function List({ todos, setTodos, statusDisplay, categorizedTodos, setCategorizedTodos }) {
-
+function List({
+  todos,
+  setTodos,
+  statusDisplay,
+  categorizedTodos,
+  setCategorizedTodos,
+}) {
   //get the id from the selected item then pass it to the function
   //create a new array from ...todos (a safer way to change the values of state)
   // filter it by getting the id is not matching
@@ -20,62 +25,53 @@ function List({ todos, setTodos, statusDisplay, categorizedTodos, setCategorized
   //grab the todos from props, then use map to loop thru
   //find the one with the same id and change it to the opposite
   const completeHandler = (id) => {
-
     let newArray = [...todos];
 
     newArray.map((item) => {
-      if(item.id == id){
-        item.complete =! item.complete
+      if (item.id == id) {
+        item.complete = !item.complete;
       }
-    })
-   
+    });
+
     //without setTodos, the UI of checkbox will not be changed
     //since we set the input checked value to {todo.complete}
-    setTodos(newArray)
-
+    setTodos(newArray);
   };
 
   //categorized all the items in todos according to the statuDisplay
-  const filterHandler = () =>{
-
+  const filterHandler = () => {
     //console.log(statusDisplay)
-    switch(statusDisplay){
+    switch (statusDisplay) {
+      case "complete":
+        setCategorizedTodos(todos.filter((item) => item.complete == true));
+        break;
 
-      case 'complete':
-        setCategorizedTodos(
-          todos.filter(item => item.complete == true)
-        )
-      break;
-
-      case 'incomplete':
-        setCategorizedTodos(
-          todos.filter(item => item.complete == false)
-        )
-      break;
+      case "incomplete":
+        setCategorizedTodos(todos.filter((item) => item.complete == false));
+        break;
 
       default:
-        setCategorizedTodos(todos)
-      break;
+        setCategorizedTodos(todos);
+        break;
     }
-  }
+  };
 
-  //execute the filterHander 
+  //execute the filterHander
   //whenever there is an update on todos and statusDisplay on state
-  useEffect(()=>{
-
-      filterHandler()
-
-  },[todos, statusDisplay])
-
-
+  useEffect(() => {
+    filterHandler();
+  }, [todos, statusDisplay]);
 
   return (
     <div className="list">
       <ul>
         {categorizedTodos.map((todo) => (
           <li key={todo.id}>
-            <input checked={todo.complete} onChange={() => completeHandler(todo.id)} 
-              type="checkbox" />
+            <input
+              checked={todo.complete}
+              onChange={() => completeHandler(todo.id)}
+              type="checkbox"
+            />
 
             {todo.name}
 
