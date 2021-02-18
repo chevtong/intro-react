@@ -13,7 +13,8 @@ function App() {
   const [statusDisplay, setStatusDisplay] = useState("all");
   const [categorizedTodos, setCategorizedTodos] = useState([]);
 
-  const [isEditing, setEditing] = useState(false);
+  const [isEditing,setIsEditing] = useState(false);
+  const [editItem, setEditItem] = useState([]);
 
 
   //this is the name to show in the key of your broswer's application
@@ -53,7 +54,9 @@ function App() {
         categorizedTodos={categorizedTodos}
         setCategorizedTodos={setCategorizedTodos}
         isEditing={isEditing}
-        setEditing={setEditing}
+        setIsEditing={setIsEditing}
+        editItem={editItem}
+        setEditItem={setEditItem}
       />
     </div>
   );

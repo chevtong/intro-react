@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 function List({
-  todos,
-  setTodos,
+  todos,setTodos,
   statusDisplay,
-  categorizedTodos,
-  setCategorizedTodos,
+  categorizedTodos, setCategorizedTodos,
+  isEditing, setIsEditing,
+  editItem, setEditItem
 }) {
 
-  const [isEditing,setIsEditing] = useState(false);
+  const editRef = useRef();
+
+  
   //get the id from the selected item then pass it to the function
   //create a new array from ...todos (a safer way to change the values of state)
   // filter it by getting the id is not matching
@@ -62,16 +64,35 @@ function List({
     filterHandler();
   }, [todos, statusDisplay]);
 
-  // const editHandler = (id,newName)=>{
-  //   const editArray = todos.map(item =>{
-  //     if(item.id == id){
-  //       return {...item, name: newName}
-  //     }
-  //     return item;
-  //   })
-  //   setTodos(editArray)
-  // }
 
+  
+ 
+  const editBtnHandler = (id) => {
+   
+    let editArray = todos.filter((item) => item.id == id);
+    
+    setEditItem(editArray);
+  }
+
+  const editSubmitHandler = (id) =>{
+    
+    console.log(id)
+    const editName = editRef.current.value;
+    console.log(editName)
+    if (editName === "") return;
+
+    const editArray = todos.map(item =>{
+      if(item.id == id){
+        return {...item, name: editName}
+      }
+      return item;
+    })
+    //console.log(editArray)
+
+    setTodos(editArray)
+    setIsEditing(false)
+
+  }
 
   const viewTemplate = (
     <div className="list">
@@ -86,7 +107,7 @@ function List({
 
             {todo.name}
 
-            <button onClick={() => setIsEditing(true)} className="edit-btn">
+            <button onClick={() => {setIsEditing(true); editBtnHandler(todo.id) }} className="edit-btn">
               <i className="far fa-edit"></i>
             </button>
 
@@ -104,12 +125,22 @@ function List({
     </div>
   )
   const editingTemplate = (
-    <form>
-      
-      <input className="edit-input" type="text" />
-      <button onClick={() => setIsEditing(false)} type="submit">Cancel</button>
-      <button type="submit">Edit</button>
-    </form>
+    <div>
+      {editItem.map((todo) => (
+         <div key={todo.id}>
+                 <input 
+                    className="edit-input" 
+                    type="text" 
+                    placeholder={todo.name} 
+                    ref={editRef} 
+                  />
+                 <button onClick={() => setIsEditing(false)} type="submit">Cancel</button>
+                 <button onClick={() => editSubmitHandler(todo.id)}type="submit">Edit</button>
+            </div>
+           
+           ))}  
+       
+    </div>
   )
 
   return <div className="todo">{isEditing ? editingTemplate : viewTemplate}</div>;
