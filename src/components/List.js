@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-function List({ todos, setTodos }) {
+function List({ todos, setTodos, statusDisplay, categorizedTodos, setCategorizedTodos }) {
 
   //get the id from the selected item then pass it to the function
   //create a new array from ...todos (a safer way to change the values of state)
@@ -35,10 +35,44 @@ function List({ todos, setTodos }) {
 
   };
 
+  //categorized all the items in todos according to the statuDisplay
+  const filterHandler = () =>{
+
+    //console.log(statusDisplay)
+    switch(statusDisplay){
+
+      case 'complete':
+        setCategorizedTodos(
+          todos.filter(item => item.complete == true)
+        )
+      break;
+
+      case 'incomplete':
+        setCategorizedTodos(
+          todos.filter(item => item.complete == false)
+        )
+      break;
+
+      default:
+        setCategorizedTodos(todos)
+      break;
+    }
+  }
+
+  //execute the filterHander 
+  //whenever there is an update on todos and statusDisplay on state
+  useEffect(()=>{
+
+      filterHandler()
+
+  },[todos, statusDisplay])
+
+
+
   return (
     <div className="list">
       <ul>
-        {todos.map((todo) => (
+        {categorizedTodos.map((todo) => (
           <li key={todo.id}>
             <input checked={todo.complete} onChange={() => completeHandler(todo.id)} 
               type="checkbox" />
@@ -55,7 +89,7 @@ function List({ todos, setTodos }) {
         ))}
       </ul>
 
-      <p>{todos.filter((todo) => !todo.complete).length} item(s) to be done </p>
+      <p>{todos.filter((todo) => !todo.complete).length} incomplete item(s) </p>
     </div>
   );
 }
