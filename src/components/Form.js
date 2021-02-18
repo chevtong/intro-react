@@ -24,15 +24,6 @@ const Form = ({ todos, setTodos, setStatusDisplay }) => {
     inputRef.current.value = null;
   };
 
-  //when the enterkey is pressed will execute the submitHandler as well
-  //since the if condition cannot put inside the submitHandler
-  //it can't be fulfilled if the user press the submit button
-  const keyEnterHandler = (e) => {
-    if (e.key === "Enter") {
-      submitHandler();
-    }
-  };
-
   //get the display of statusDisplay - (all/complete/incomplete) from the dropdown menu
   //update it in the state and show the corresponding categorized todo items
   //refer to filterHandler in the List
@@ -44,10 +35,19 @@ const Form = ({ todos, setTodos, setStatusDisplay }) => {
 
   return (
     <div className="form">
-      <input ref={inputRef} type="text" onKeyPress={keyEnterHandler} className="newitem-input" />
+
+      <input 
+        className="newitem-input" 
+        type="text" 
+        ref={inputRef}
+        //when the enterkey is pressed will execute the submitHandler as well 
+        onKeyPress={(e)=>{if (e.key === "Enter") {submitHandler()}}} 
+      />
+
       <button onClick={submitHandler} type="submit" className="addtodo-btn">
         <i className="fas fa-plus"></i>
       </button>
+
       <div className="select">
         <select onChange={selectHandler}>
           <option value="all">All</option>
@@ -55,6 +55,7 @@ const Form = ({ todos, setTodos, setStatusDisplay }) => {
           <option value="incomplete">incomplete</option>
         </select>
       </div>
+      
     </div>
   );
 };

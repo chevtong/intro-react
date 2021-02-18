@@ -1,16 +1,18 @@
 import React, { useEffect, useRef } from "react";
 
 function List({
-  todos,setTodos,
+  todos,
+  setTodos,
   statusDisplay,
-  categorizedTodos, setCategorizedTodos,
-  isEditing, setIsEditing,
-  editItem, setEditItem
+  categorizedTodos,
+  setCategorizedTodos,
+  isEditing,
+  setIsEditing,
+  editItem,
+  setEditItem,
 }) {
-
   const editRef = useRef();
 
-  
   //get the id from the selected item then pass it to the function
   //create a new array from ...todos (a safer way to change the values of state)
   // filter it by getting the id is not matching
@@ -64,36 +66,36 @@ function List({
     filterHandler();
   }, [todos, statusDisplay]);
 
-
-  
- 
-  const editBtnHandler = (id) => {
-   
+  //when edit btn in the viewTemplete is clicked, a new editItem state will be updated
+  //it will be used to show the info in the conditional rendering in the edit page - editingTemplate
+  const editItemHandler = (id) => {
     let editArray = todos.filter((item) => item.id == id);
-    
-    setEditItem(editArray);
-  }
 
-  const editSubmitHandler = (id) =>{
-    
-    console.log(id)
+    setEditItem(editArray);
+  };
+
+  //when edit submit btn is clicked on edit page, 
+  //use ref (like the new item input) to get the value, 
+  //and setTodos to update the state
+  //change back the isEditing statue to false to go back to the viewTemplate
+  const editSubmitHandler = (id) => {
     const editName = editRef.current.value;
-    console.log(editName)
+
     if (editName === "") return;
 
-    const editArray = todos.map(item =>{
-      if(item.id == id){
-        return {...item, name: editName}
+    const editArray = todos.map((item) => {
+      if (item.id == id) {
+        return { ...item, name: editName };
       }
       return item;
-    })
-    //console.log(editArray)
+    });
 
-    setTodos(editArray)
-    setIsEditing(false)
+    setTodos(editArray);
+    setIsEditing(false);
+  };
 
-  }
-
+  //viewTemplate will be shown when isEditing state is false
+  //the default of isEditing = false
   const viewTemplate = (
     <div className="list">
       <ul>
@@ -107,7 +109,15 @@ function List({
 
             {todo.name}
 
-            <button onClick={() => {setIsEditing(true); editBtnHandler(todo.id) }} className="edit-btn">
+            <button
+              //1: change isEditing=true to switch to the editTemplate
+              //2: take the id of the item to the editItem state for display and edit in the editTemplate
+              onClick={() => {
+                setIsEditing(true);
+                editItemHandler(todo.id);
+              }}
+              className="edit-btn"
+            >
               <i className="far fa-edit"></i>
             </button>
 
@@ -123,28 +133,40 @@ function List({
 
       <p>{todos.filter((todo) => !todo.complete).length} incomplete item(s) </p>
     </div>
-  )
+  );
+
+  //editingTemplate will be shown when isEditing state is true
+  //editItem state is updated when the user click on the Edit btn on viewTemplate,
+  //which execute the editItemHandler() 
   const editingTemplate = (
     <div>
-      {editItem.map((todo) => (
-         <div key={todo.id}>
-                 <input 
-                    className="edit-input" 
-                    type="text" 
-                    placeholder={todo.name} 
-                    ref={editRef} 
-                  />
-                 <button onClick={() => setIsEditing(false)} type="submit">Cancel</button>
-                 <button onClick={() => editSubmitHandler(todo.id)}type="submit">Edit</button>
-            </div>
-           
-           ))}  
-       
-    </div>
-  )
 
-  return <div className="todo">{isEditing ? editingTemplate : viewTemplate}</div>;
-  
+      {editItem.map((todo) => (
+        <div key={todo.id}>
+          <input
+            className="edit-input"
+            type="text"
+            placeholder={todo.name}
+            ref={editRef}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                editSubmitHandler(todo.id);
+              }
+            }}
+          />
+          <button onClick={() => setIsEditing(false)} type="submit">
+            Cancel
+          </button>
+          <button onClick={() => editSubmitHandler(todo.id)} type="submit">
+            Edit
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+
+  //conditional rendering according to the isEditing = true/false
+  return <div>{isEditing ? editingTemplate : viewTemplate}</div>;
 }
 
 export default List;
