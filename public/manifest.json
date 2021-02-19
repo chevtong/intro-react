@@ -1,6 +1,6 @@
 {
   "short_name": "To Do",
-  "name": "Your To Do List",
+  "name": "Your To Do App",
   "icons": [
     {
       "src": "list.png",
@@ -8,18 +8,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "list.png",
+      "src": "",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "list.png",
+      "src": "",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#121435",
+  "background_color": "#ffe227"
 }

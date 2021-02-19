@@ -2,7 +2,7 @@
 
  A small Todo application that lives in the browser, and saves todos after browsers restart.
 
-![Demo](public/todo_list.gif)
+![Demo](public/todo_list_demo.gif)
 
 Live Version - [To Do App](https://todo-app-by-react.netlify.app)
 
