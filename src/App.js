@@ -47,6 +47,7 @@ function App() {
       <div className="circle1"></div>
       <div className="circle2"></div>
       <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
+      
         <i className="fas fa-plus"></i>
       </button>
 

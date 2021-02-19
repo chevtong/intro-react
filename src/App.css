@@ -16,7 +16,7 @@ body::-webkit-scrollbar {
 }
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background-color: #ffe227;
 }
 body::-webkit-scrollbar-thumb {
@@ -37,7 +37,7 @@ ul::-webkit-scrollbar {
 }
 ul::-webkit-scrollbar-track {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 ul::-webkit-scrollbar-thumb {
   background-color: #121435;
@@ -51,10 +51,10 @@ li {
   margin: auto;
   display: grid;
   grid-template-columns: 10% 70% 10% 10%;
-   align-content: end; 
+  align-content: end;
   height: 4rem;
   border-bottom: 2px solid #121435;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 input:focus,
 button:focus {
@@ -64,57 +64,68 @@ button {
   border: none;
 }
 
-h2.edit-title{
-    margin: 1rem 0;
+h2.edit-title {
+  margin: 1rem 0;
 }
-p.completed-todo{
-    text-transform: capitalize;
-    font-size: 1.5rem;
+p.completed-todo {
+  text-transform: capitalize;
+  font-size: 1.5rem;
 }
-p.incomplete-todo{
-    opacity: .5;
-    text-transform: capitalize;
-    font-size: 1.5rem;
+p.incomplete-todo {
+  opacity: 0.5;
+  text-transform: capitalize;
+  font-size: 1.5rem;
 }
-p.todo-countdown{
-    text-transform: capitalize;
-    font-size: smaller; 
+p.todo-countdown {
+  text-transform: capitalize;
+  font-size: smaller;
 }
 
 /* specific buttons css */
-button.newtodo-btn{
+button.newtodo-btn {
   background-color: #121435;
   width: 15rem;
   height: 15rem;
   /* margin: 1rem; */
   position: absolute;
-   top: -7rem;
-    left: -7rem; 
-    border-radius: 50%;
+  top: -7rem;
+  left: -7rem;
+  border-radius: 50%;
 }
-.addtodo-btn, .edit-btn, .trash-btn, .goback-btn, .editsubmit-btn, .newtodo-btn{
+.addtodo-btn,
+.edit-btn,
+.trash-btn,
+.goback-btn,
+.editsubmit-btn,
+.newtodo-btn {
   background-color: transparent;
 }
-.newtodo-btn i{
+.newtodo-btn i {
   font-size: 3rem;
   color: #ffe227;
   padding-left: 5rem;
   padding-top: 5rem;
 }
 
-.addtodo-btn i  {
+.addtodo-btn i {
   font-size: 1.5rem;
   color: #121435;
 }
-.edit-btn i, .trash-btn i{
-    font-size: 1rem;
-    color: #121435;
+.edit-btn i,
+.trash-btn i {
+  font-size: 1rem;
+  color: #121435;
 }
-.goback-btn i, .editsubmit-btn i{
-    font-size: 1.2rem;
-    color: #121435;
+.goback-btn i,
+.editsubmit-btn i {
+  font-size: 1.2rem;
+  color: #121435;
 }
-.addtodo-btn i:hover, .edit-btn i:hover, .trash-btn i:hover, .goback-btn i:hover, .editsubmit-btn i:hover {
+.addtodo-btn i:hover,
+.edit-btn i:hover,
+.trash-btn i:hover,
+.goback-btn i:hover,
+.editsubmit-btn i:hover {
   color: #ffe227;
 }
 .categories-btns {
@@ -139,9 +150,9 @@ button.newtodo-btn{
   opacity: 0.8;
 }
 
-
 /* specific inputs css */
-.newitem-input, .edit-input {
+.newitem-input,
+.edit-input {
   border: none;
   border-bottom: 3px solid #121435;
   background-color: transparent;
@@ -149,7 +160,7 @@ button.newtodo-btn{
   margin: 0.5rem 1rem;
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
-  color:#121435;
+  color: #121435;
   text-align: center;
   font-weight: 500;
   text-transform: capitalize;
@@ -183,20 +194,21 @@ input[type="checkbox"]:checked:after {
   margin: auto;
   text-align: center;
 }
-.form, .list {
+.form,
+.list {
   border: 1px solid #d1d1d1;
-  border-radius: 5px;;
+  border-radius: 5px;
   margin: 3rem;
   padding: 3rem 0;
-  transition: all .8s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }
-.not-active-form{
+.not-active-form {
   opacity: 0;
   height: 0;
-  transition: all .8s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }
-.edit-template{
-    margin: 2rem 0;
+.edit-template {
+  margin: 2rem 0;
 }
 
 /* background css */
@@ -211,45 +223,94 @@ input[type="checkbox"]:checked:after {
   z-index: -1;
 }
 .circle2 {
-    background: #ffe227;
-    height: 5rem;
-    width: 5rem;
-    position: fixed;
-    top: 40%;
-    right: 38%;
-    border-radius: 50%;
-    z-index: -1;
-  }
+  background: #ffe227;
+  height: 5rem;
+  width: 5rem;
+  position: fixed;
+  top: 40%;
+  right: 38%;
+  border-radius: 50%;
+  z-index: -1;
+}
 
-
-@media only screen and (max-width: 768px){
-  .App{
-    width: 70%;
-  }
-  li{
+/* media query below */
+@media only screen and (max-width: 920px) {
+  .App {
     width: 80%;
+  }
+  p.completed-todo,
+  p.incomplete-todo {
+    font-size: 1.2rem;
+    align-self: center;
   }
 }
 
-@media only screen and (max-width: 425px){
-  .App{
+@media only screen and (max-width: 769px) {
+  li {
+    width: 80%;
+  }
+  button.newtodo-btn {
+    width: 10rem;
+    height: 10rem;
+    top: -5rem;
+    left: -5rem;
+  }
+  .newtodo-btn i {
+    font-size: 2rem;
+    padding-left: 4rem;
+    padding-top: 4rem;
+  }
+  .circle1 {
+    left: 30%;
+  }
+  .circle2 {
+    right: 30%;
+    top: 43%;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .App {
     width: 90%;
+    margin: auto;
   }
-  li{
+  li {
     width: 80%;
   }
-  p.completed-todo, p.incomplete-todo{
+  p.completed-todo,
+  p.incomplete-todo {
     font-size: 1rem;
-}
-  .form, .list{
+    align-self: center;
+  }
+  .form,
+  .list {
+    width: 90%;
+    margin: 3rem auto;
     z-index: -1;
   }
-  button.newtodo-btn{
-    width: 2rem;
-    height: 2rem;
-    margin: .5rem;
+  button.newtodo-btn {
+    width: 8rem;
+    height: 8rem;
+    top: -4rem;
+    left: -4rem;
   }
-  .newtodo-btn i{
+  .newtodo-btn i {
+    font-size: 2rem;
+    padding-left: 3rem;
+    padding-top: 3rem;
+  }
+  input[type="checkbox"] {
     font-size: 1rem;
+  }
+  input[type="checkbox"]:after {
+    width: 1rem;
+    height: 1rem;
+  }
+  .circle1 {
+    left: 20%;
+  }
+  .circle2 {
+    right: 20%;
+    top: 45%;
   }
 }
