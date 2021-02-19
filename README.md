@@ -2,6 +2,10 @@
 
 Live Version: [To Do App](https://todo-app-by-react.netlify.app)
 
+- WIP : responsive of page
+- WIP : readme page 
+
+
 <!-- Repository: intro-react
 Mode: solo
 Type of Challenge: learning

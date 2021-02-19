@@ -6,20 +6,18 @@ import Form from "./components/Form";
 import List from "./components/List";
 
 function App() {
-
   const [todos, setTodos] = useState([]);
 
   //use to show the add new item section
-  const [isAdding,setIsAdding] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
 
   //create 2 more status to track the change of statusDisplay (ALL/Complete/Incomplete)
   //and showing the complete/incomplete items accordingly
   const [statusDisplay, setStatusDisplay] = useState("all");
   const [categorizedTodos, setCategorizedTodos] = useState([]);
 
-  const [isEditing,setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [editItem, setEditItem] = useState([]);
-
 
   //this is the name to show in the key of your broswer's application
   const LSKEY = "todoApp";
@@ -39,23 +37,18 @@ function App() {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
-  const addTodoHandler = () =>{
+  const addTodoHandler = () => {
     //console.log(isAdding)
-    setIsAdding(isAdding? false : true)
-  
-  }
-
-
+    setIsAdding(isAdding ? false : true);
+  };
 
   return (
     <div className="App">
-
-<div className="circle1"></div>
+      <div className="circle1"></div>
       <div className="circle2"></div>
       <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
-    <i className="fas fa-plus"></i>
-  </button>
-      
+        <i className="fas fa-plus"></i>
+      </button>
 
       <Form
         //need to pass the props to the components, so we can use inside it
@@ -63,7 +56,6 @@ function App() {
         setTodos={setTodos}
         isAdding={isAdding}
         setIsAdding={setIsAdding}
-   
       />
 
       <List
