@@ -37,8 +37,8 @@ function App() {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
+  //
   const addTodoHandler = () => {
-    //console.log(isAdding)
     setIsAdding(isAdding ? false : true);
   };
 

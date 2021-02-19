@@ -1,34 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Montserrat:wght@400;700&display=swap");
-/* font-family: 'Cabin', sans-serif;
-font-family: 'Montserrat', sans-serif; */
+
 * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  /* background-color: #e8d5b7; */
   font-family: "Montserrat", sans-serif;
   color: #121435;
 }
 
+/* body - scroll bar css */
 body::-webkit-scrollbar {
   width: 0.4em;
-  
 }
-
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: #ffe227;
- 
 }
-
 body::-webkit-scrollbar-thumb {
   background-color: #121435;
   height: 5px;
   border-radius: 5px;
- 
 }
 
 ul {
@@ -37,35 +31,39 @@ ul {
   height: 50vh;
   overflow-y: auto;
 }
+/* ul-scroll bar css */
+ul::-webkit-scrollbar {
+  width: 0.3em;
+}
+ul::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+ul::-webkit-scrollbar-thumb {
+  background-color: #121435;
+  height: 8px;
+  border-radius: 8px;
+}
+
+/* other global elements' css */
 li {
   width: 60%;
   margin: auto;
   display: grid;
   grid-template-columns: 10% 70% 10% 10%;
-  align-content: end;
+   align-content: end; 
   height: 4rem;
   border-bottom: 2px solid #121435;
   padding: .5rem 0;
- 
 }
-ul::-webkit-scrollbar {
-    width: 0.3em;
-  }
-  
-ul::-webkit-scrollbar-track {
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  
-ul::-webkit-scrollbar-thumb {
-    background-color: #121435;
-    height: 8px;
-    border-radius: 8px;
-  }
-
+input:focus,
+button:focus {
+  outline: none;
+}
 button {
   border: none;
 }
+
 h2.edit-title{
     margin: 1rem 0;
 }
@@ -80,33 +78,33 @@ p.incomplete-todo{
 }
 p.todo-countdown{
     text-transform: capitalize;
-    font-size: smaller;
-    
+    font-size: smaller; 
+}
+
+/* specific buttons css */
+button.newtodo-btn{
+  background-color: #121435;
+  width: 15rem;
+  height: 15rem;
+  /* margin: 1rem; */
+  position: absolute;
+   top: -7rem;
+    left: -7rem; 
+    border-radius: 50%;
 }
 .addtodo-btn, .edit-btn, .trash-btn, .goback-btn, .editsubmit-btn, .newtodo-btn{
   background-color: transparent;
 }
-button.newtodo-btn{
-  background-color: #121435;
-  width: 5rem;
-  height: 5rem;
-  margin: 1rem;
-  position: absolute;
-    /* top: 2%;*/
-    left: 0; 
-    border-radius: 50%;
-}
-
 .newtodo-btn i{
   font-size: 3rem;
   color: #ffe227;
+  padding-left: 5rem;
+  padding-top: 5rem;
 }
+
 .addtodo-btn i  {
   font-size: 1.5rem;
   color: #121435;
-}
-.addtodo-btn i:hover, .edit-btn i:hover, .trash-btn i:hover, .goback-btn i:hover, .editsubmit-btn i:hover {
-  color: #ffe227;
 }
 .edit-btn i, .trash-btn i{
     font-size: 1rem;
@@ -116,7 +114,9 @@ button.newtodo-btn{
     font-size: 1.2rem;
     color: #121435;
 }
-
+.addtodo-btn i:hover, .edit-btn i:hover, .trash-btn i:hover, .goback-btn i:hover, .editsubmit-btn i:hover {
+  color: #ffe227;
+}
 .categories-btns {
   display: flex;
   justify-content: space-around;
@@ -139,6 +139,8 @@ button.newtodo-btn{
   opacity: 0.8;
 }
 
+
+/* specific inputs css */
 .newitem-input, .edit-input {
   border: none;
   border-bottom: 3px solid #121435;
@@ -152,64 +154,52 @@ button.newtodo-btn{
   font-weight: 500;
   text-transform: capitalize;
 }
-input:focus,
-button:focus {
-  outline: none;
-}
-
 input[type="checkbox"] {
   width: 30px;
   height: 30px;
-  /* margin-right: 8px; */
   cursor: pointer;
   font-size: 17px;
   visibility: hidden;
 }
-
 input[type="checkbox"]:after {
   content: " ";
   background-color: transparent;
   display: inline-block;
-  /* margin-left: 10px; */
-  /* padding-bottom: 5px; */
   color: #121435;
   width: 1.5rem;
   height: 1.5rem;
   visibility: visible;
-  border: 2px solid #121435;
-  /* padding-left: 3px;  */
+  border: 5px solid #121435;
   border-radius: 50%;
 }
 input[type="checkbox"]:checked:after {
   content: " \2714";
-  /* padding: -5px; */
   background-color: #ffe227;
 }
 
+/* layout css */
 .App {
   width: 50%;
   margin: auto;
   text-align: center;
 }
-
-.form,
-.list {
+.form, .list {
   border: 1px solid #d1d1d1;
   border-radius: 5px;;
   margin: 3rem;
   padding: 3rem 0;
-  transition: all .5s ease-in-out;
+  transition: all .8s ease-in-out;
 }
 .not-active-form{
   opacity: 0;
-  /* display: hidden; */
-  transition: all .5s ease-in-out;
-
+  height: 0;
+  transition: all .8s ease-in-out;
 }
 .edit-template{
     margin: 2rem 0;
 }
 
+/* background css */
 .circle1 {
   background: #ffe227;
   height: 4.5rem;
@@ -231,13 +221,35 @@ input[type="checkbox"]:checked:after {
     z-index: -1;
   }
 
-  /* .circle3 {
-    background: #ffe227;
-    height: 4.5rem;
-    width: 4.5rem;
-    position: fixed;
-    top: 70%;
-    left: 30%;
-    border-radius: 50%;
+
+@media only screen and (max-width: 768px){
+  .App{
+    width: 70%;
+  }
+  li{
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 425px){
+  .App{
+    width: 90%;
+  }
+  li{
+    width: 80%;
+  }
+  p.completed-todo, p.incomplete-todo{
+    font-size: 1rem;
+}
+  .form, .list{
     z-index: -1;
-  } */
+  }
+  button.newtodo-btn{
+    width: 2rem;
+    height: 2rem;
+    margin: .5rem;
+  }
+  .newtodo-btn i{
+    font-size: 1rem;
+  }
+}

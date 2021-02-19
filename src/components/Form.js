@@ -21,6 +21,7 @@ const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
 
     //give back a empty string to the input
     inputRef.current.value = null;
+    setIsAdding(isAdding ? false : true);
   };
 
   return (
