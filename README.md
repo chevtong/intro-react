@@ -10,8 +10,9 @@ Live Version - [To Do App](https://todo-app-by-react.netlify.app)
 ## Objectives
 
 - Get used to "think in React"
-- Use basic hooks for managing state and reactivity
-- Organize the app in components
+- Use state, effect hooks and ref for managing and reactivity
+- Organize the app in different components
+- Store information with user's local storage
 
 
 
