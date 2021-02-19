@@ -177,7 +177,7 @@ function List({
     <div className="edit-template">
       {editItem.map((todo) => (
         <div key={todo.id}>
-          <h2 className="edit-title">EDIT ITEM</h2>
+          <h2 className="edit-title">EDIT AN ITEM</h2>
           <button onClick={() => setIsEditing(false)} type="submit" className="goback-btn">
           <i class="fas fa-arrow-left"></i>
           </button>

@@ -6,7 +6,8 @@ import Form from "./components/Form";
 import List from "./components/List";
 
 function App() {
-  
+
+  const [isAdding,setIsAdding] = useState(false);
   const [todos, setTodos] = useState([]);
   //create 2 more status to track the change of statusDisplay (ALL/Complete/Incomplete)
   //and showing the complete/incomplete items accordingly
@@ -35,14 +36,30 @@ function App() {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
+  const addTodoHandler = () =>{
+    //console.log(isAdding)
+    setIsAdding(isAdding? false : true)
+  
+  }
+
+
+
   return (
     <div className="App">
-      
 
+<div className="circle1"></div>
+      <div className="circle2"></div>
+     
+      
+      <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
+        <i className="fas fa-plus"></i>
+      </button>
       <Form
         //need to pass the props to the components, so we can use inside it
         todos={todos}
         setTodos={setTodos}
+        isAdding={isAdding}
+        setIsAdding={setIsAdding}
       />
 
       <List

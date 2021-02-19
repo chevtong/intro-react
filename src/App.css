@@ -12,6 +12,25 @@ body {
   color: #121435;
 }
 
+body::-webkit-scrollbar {
+  width: 0.4em;
+  
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #ffe227;
+ 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #121435;
+  height: 5px;
+  border-radius: 5px;
+ 
+}
+
 ul {
   list-style-type: none;
   margin-bottom: 2rem;
@@ -64,7 +83,7 @@ p.todo-countdown{
     font-size: smaller;
     
 }
-.addtodo-btn, .edit-btn, .trash-btn, .goback-btn, .editsubmit-btn{
+.addtodo-btn, .edit-btn, .trash-btn, .goback-btn, .editsubmit-btn, .newtodo-btn{
   background-color: transparent;
 }
 .addtodo-btn i  {
@@ -164,6 +183,7 @@ input[type="checkbox"]:checked:after {
   border-radius: 5px;;
   margin: 3rem;
   padding: 3rem 0;
+  transition: all .3s ease-in-out;
 }
 .edit-template{
     margin: 2rem 0;
@@ -184,8 +204,19 @@ input[type="checkbox"]:checked:after {
     height: 5rem;
     width: 5rem;
     position: fixed;
-    top: 38%;
-    right: 41%;
+    top: 40%;
+    right: 38%;
     border-radius: 50%;
     z-index: -1;
   }
+
+  /* .circle3 {
+    background: #ffe227;
+    height: 4.5rem;
+    width: 4.5rem;
+    position: fixed;
+    top: 70%;
+    left: 30%;
+    border-radius: 50%;
+    z-index: -1;
+  } */

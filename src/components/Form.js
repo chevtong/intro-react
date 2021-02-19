@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 //get the props from App.js, will need both todos and setTodos here
-const Form = ({ todos, setTodos }) => {
+const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
 
   //useRef can take the entry of the input
   const inputRef = useRef();
@@ -24,12 +24,9 @@ const Form = ({ todos, setTodos }) => {
     inputRef.current.value = null;
   };
 
-
-
-  return (
+  const addingTemplate = (
     <div className="form">
-      <div className="circle1"></div>
-      <div className="circle2"></div>
+     
       
       <h2>ADD A NEW ONE</h2>
       <input 
@@ -47,6 +44,16 @@ const Form = ({ todos, setTodos }) => {
 
 
     </div>
+  )
+  
+
+
+
+  return (
+    <div>
+    {isAdding ? addingTemplate : ""}
+    </div>
+    
   );
 };
 
