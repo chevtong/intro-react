@@ -24,19 +24,12 @@ const Form = ({ todos, setTodos, isAdding,setIsAdding}) => {
     inputRef.current.value = null;
   };
 
-  const addTodoHandler = () =>{
-    //console.log(isAdding)
-    setIsAdding(isAdding? false : true)
-  
-  }
 
 
 
   return (
     <div>
-    <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
-    <i className="fas fa-plus"></i>
-  </button>
+    
     <div className={isAdding ? 'form': 'not-active-form'} >
      
       

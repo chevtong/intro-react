@@ -86,6 +86,21 @@ p.todo-countdown{
 .addtodo-btn, .edit-btn, .trash-btn, .goback-btn, .editsubmit-btn, .newtodo-btn{
   background-color: transparent;
 }
+button.newtodo-btn{
+  background-color: #121435;
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem;
+  position: absolute;
+    /* top: 2%;*/
+    left: 0; 
+    border-radius: 50%;
+}
+
+.newtodo-btn i{
+  font-size: 3rem;
+  color: #ffe227;
+}
 .addtodo-btn i  {
   font-size: 1.5rem;
   color: #121435;

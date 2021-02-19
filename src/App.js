@@ -7,8 +7,11 @@ import List from "./components/List";
 
 function App() {
 
-  const [isAdding,setIsAdding] = useState(false);
   const [todos, setTodos] = useState([]);
+
+  //use to show the add new item section
+  const [isAdding,setIsAdding] = useState(false);
+
   //create 2 more status to track the change of statusDisplay (ALL/Complete/Incomplete)
   //and showing the complete/incomplete items accordingly
   const [statusDisplay, setStatusDisplay] = useState("all");
@@ -36,6 +39,11 @@ function App() {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
+  const addTodoHandler = () =>{
+    //console.log(isAdding)
+    setIsAdding(isAdding? false : true)
+  
+  }
 
 
 
@@ -44,7 +52,9 @@ function App() {
 
 <div className="circle1"></div>
       <div className="circle2"></div>
-     
+      <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
+    <i className="fas fa-plus"></i>
+  </button>
       
 
       <Form
