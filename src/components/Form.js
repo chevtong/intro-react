@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 //get the props from App.js, will need both todos and setTodos here
-const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
+const Form = ({ todos, setTodos, isAdding,setIsAdding}) => {
 
   //useRef can take the entry of the input
   const inputRef = useRef();
@@ -24,8 +24,20 @@ const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
     inputRef.current.value = null;
   };
 
-  const addingTemplate = (
-    <div className="form">
+  const addTodoHandler = () =>{
+    //console.log(isAdding)
+    setIsAdding(isAdding? false : true)
+  
+  }
+
+
+
+  return (
+    <div>
+    <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
+    <i className="fas fa-plus"></i>
+  </button>
+    <div className={isAdding ? 'form': 'not-active-form'} >
      
       
       <h2>ADD A NEW ONE</h2>
@@ -44,14 +56,6 @@ const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
 
 
     </div>
-  )
-  
-
-
-
-  return (
-    <div>
-    {isAdding ? addingTemplate : ""}
     </div>
     
   );

@@ -36,11 +36,6 @@ function App() {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
-  const addTodoHandler = () =>{
-    //console.log(isAdding)
-    setIsAdding(isAdding? false : true)
-  
-  }
 
 
 
@@ -51,15 +46,14 @@ function App() {
       <div className="circle2"></div>
      
       
-      <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
-        <i className="fas fa-plus"></i>
-      </button>
+
       <Form
         //need to pass the props to the components, so we can use inside it
         todos={todos}
         setTodos={setTodos}
         isAdding={isAdding}
         setIsAdding={setIsAdding}
+   
       />
 
       <List

@@ -183,7 +183,13 @@ input[type="checkbox"]:checked:after {
   border-radius: 5px;;
   margin: 3rem;
   padding: 3rem 0;
-  transition: all .3s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+.not-active-form{
+  opacity: 0;
+  /* display: hidden; */
+  transition: all .5s ease-in-out;
+
 }
 .edit-template{
     margin: 2rem 0;
