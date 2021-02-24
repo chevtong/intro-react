@@ -1,10 +1,14 @@
 # My first front-end framework: React
 
- A small Todo application that lives in the browser, and saves todos after browsers restart.
+ A small Todo application that lives in the browser, provides you a place to write down your tasks. 
+ You can add, edit, categorized different tasks, and the list will be saved to the local storage of the browser in every edit.
+ 
+
+ Live Version in Netlify - [To Do App](https://todo-app-by-react.netlify.app)
 
 ![Demo](public/todo_list_demo.gif)
 
-Live Version - [To Do App](https://todo-app-by-react.netlify.app)
+
 
 
 ## Objectives
