@@ -1,12 +1,19 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 
 //Importing components
 import Form from "./components/Form";
 import List from "./components/List";
 
 function App() {
+  //STATE Manager
+  const templateTodos = [{ name: "Learn Redux", complete: false, id: uuidv4() }]
+
+
   const [todos, setTodos] = useState([]);
+
 
   //use to show the add new item section
   const [isAdding, setIsAdding] = useState(false);
@@ -24,11 +31,19 @@ function App() {
   //with a empty second parameter, the useEffect will run only once when the page is loaded
   //if the localstorage is not empty, grab the todos array and use setTodos to put in state
   useEffect(() => {
-    if (localStorage.getItem(LSKEY) != null) {
-      let localTodo = JSON.parse(localStorage.getItem(LSKEY));
 
-      setTodos(localTodo);
+    let localTodos = JSON.parse(localStorage.getItem(LSKEY));
+
+    if (localTodos.length>0) {
+     // console.log("NOT NULL")
+      setTodos(localTodos);
     }
+      
+     else {
+       //let localTodo = JSON.parse(localStorage.getItem(LSKEY));
+
+      setTodos(templateTodos);
+     }
   }, []);
 
   //second parameter [todos] will trigger the useEffect when a change to the todos state
