@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Edit() {
+function ViewPage() {
     return (
         <div>
-
+            viewPage
         </div>
     )
 }
 
-export default Edit
+export default ViewPage

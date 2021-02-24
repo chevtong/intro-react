@@ -174,6 +174,7 @@ function List({
   //editItem state is updated when the user click on the Edit btn on viewTemplate,
   //which execute the editItemHandler()
   const editingTemplate = (
+    
     <div className="edit-template">
       {editItem.map((todo) => (
         <div key={todo.id}>
@@ -200,6 +201,7 @@ function List({
       ))}
     </div>
   );
+  
 
   //conditional rendering according to the isEditing = true/false
   return (
