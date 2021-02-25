@@ -197,7 +197,7 @@ input[type="checkbox"]:checked:after {
 .form,
 .list {
   border: 1px solid #d1d1d1;
-  border-radius: 5px;
+  border-radius: 8px;
   margin: 3rem;
   padding: 3rem 0;
   transition: all 0.8s ease-in-out;

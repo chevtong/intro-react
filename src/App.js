@@ -4,15 +4,13 @@ import { v4 as uuidv4 } from "uuid";
 
 //Importing components
 import Form from "./components/Form";
-import List from "./components/List";
 import Edit from "./components/Edit";
-import EditPage from "./components/EditPage";
-import ViewPage from "./components/ViewPage";
+import View from "./components/View";
 
 function App() {
   //STATE Manager
   const templateTodos = [
-    { name: "Learn Redux", complete: false, id: uuidv4() },
+    { name: "do the laundry", complete: false, id: uuidv4() },
   ];
 
   const [todos, setTodos] = useState([]);
@@ -28,7 +26,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editItem, setEditItem] = useState([]);
 
-  const [Editing, setEditing] = useState(true);
+//  const [Editing, setEditing] = useState(false);
 
   //this is the name to show in the key of your broswer's application
   const LSKEY = "todoApp";
@@ -60,6 +58,7 @@ function App() {
 
   return (
     <div className="App">
+
       <div className="circle1"></div>
       <div className="circle2"></div>
       <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
@@ -74,24 +73,31 @@ function App() {
         setIsAdding={setIsAdding}
       />
 
-      <List
-        todos={todos}
-        setTodos={setTodos}
-        statusDisplay={statusDisplay}
-        setStatusDisplay={setStatusDisplay}
-        categorizedTodos={categorizedTodos}
-        setCategorizedTodos={setCategorizedTodos}
-        isEditing={isEditing}
-        setIsEditing={setIsEditing}
-        editItem={editItem}
-        setEditItem={setEditItem}
-      />
+
 
       <div className="list">
         <h1 className="title-list">MY TO DO LIST</h1>
 
-        {Editing ? <EditPage /> : <ViewPage />}
-        {/* TODO: separate editingTemplate and viewing template to 2 different components */}
+        {isEditing ? 
+          <Edit 
+          todos={todos}
+          setTodos={setTodos}
+          setIsEditing={setIsEditing} 
+          editItem={editItem}
+          setEditItem={setEditItem}/> 
+          :   
+          <View
+          todos={todos}
+          setTodos={setTodos}
+          statusDisplay={statusDisplay}
+          setStatusDisplay={setStatusDisplay}
+          categorizedTodos={categorizedTodos}
+          setCategorizedTodos={setCategorizedTodos}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          editItem={editItem}
+          setEditItem={setEditItem}/>
+        }
       </div>
     </div>
   );
