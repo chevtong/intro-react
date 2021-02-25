@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 function Edit({ todos,setTodos,setIsEditing, editItem }) {
 
-    const editRef = useRef();
+  const editRef = useRef();
 
   //when edit submit btn is clicked on edit page,
   //use ref (like the new item input) to get the value,

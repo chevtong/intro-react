@@ -109,7 +109,7 @@ function View({
             </div>
             <ul>
                 {categorizedTodos.map((todo) => (
-                <li key={todo.id}>
+                <li key={todo.id} className="trans">
                     <input
                     className="checkbox1"
                     checked={todo.complete}

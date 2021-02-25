@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-//get the props from App.js, will need both todos and setTodos here
 const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
+
   //useRef can take the entry of the input
   const inputRef = useRef();
 
@@ -11,8 +11,6 @@ const Form = ({ todos, setTodos, isAdding, setIsAdding }) => {
 
     //if it is an empty string in value, return and do not do anything
     if (name === "") return;
-    // console.log(name)
-    // console.log(todos)
 
     //use setTodos to change the current todos statue
     //first, combine the current todos by ...todos

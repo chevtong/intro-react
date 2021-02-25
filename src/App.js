@@ -8,7 +8,6 @@ import Edit from "./components/Edit";
 import View from "./components/View";
 
 function App() {
-  //STATE Manager
   const templateTodos = [
     { name: "do the laundry", complete: false, id: uuidv4() },
   ];
@@ -26,21 +25,17 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editItem, setEditItem] = useState([]);
 
-//  const [Editing, setEditing] = useState(false);
-
   //this is the name to show in the key of your broswer's application
   const LSKEY = "todoApp";
   //with a empty second parameter, the useEffect will run only once when the page is loaded
   //if the localstorage is not empty, grab the todos array and use setTodos to put in state
   useEffect(() => {
+
     let localTodos = JSON.parse(localStorage.getItem(LSKEY));
 
     if (localTodos.length > 0) {
-      // console.log("NOT NULL")
       setTodos(localTodos);
     } else {
-      //let localTodo = JSON.parse(localStorage.getItem(LSKEY));
-
       setTodos(templateTodos);
     }
   }, []);
@@ -51,7 +46,7 @@ function App() {
     window.localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
-  //
+  //to show the plus button on the top left of page with plus / back sign
   const addTodoHandler = () => {
     setIsAdding(isAdding ? false : true);
   };
@@ -61,19 +56,22 @@ function App() {
 
       <div className="circle1"></div>
       <div className="circle2"></div>
-      <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
+
+      {isAdding ?       
+        <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
+        <i class="fas fa-arrow-left"></i>
+        </button> : 
+        <button type="submit" className="newtodo-btn" onClick={addTodoHandler}>
         <i className="fas fa-plus"></i>
-      </button>
+        </button>
+      }
 
       <Form
-        //need to pass the props to the components, so we can use inside it
         todos={todos}
         setTodos={setTodos}
         isAdding={isAdding}
         setIsAdding={setIsAdding}
       />
-
-
 
       <div className="list">
         <h1 className="title-list">MY TO DO LIST</h1>
