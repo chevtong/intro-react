@@ -24,3 +24,5 @@
 
 - VS Code
 - React
+- Netlify 
+- Fontawsome icons
